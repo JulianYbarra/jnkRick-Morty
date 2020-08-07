@@ -5,14 +5,25 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProviders
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.junka.jnkrickmorty.R
+import com.junka.jnkrickmorty.data.DataSource
 import com.junka.jnkrickmorty.databinding.FragmentMainBinding
+import com.junka.jnkrickmorty.domain.RepoImpl
+import com.junka.jnkrickmorty.presenter.ui.adapter.CharactersAdapter
+import com.junka.jnkrickmorty.presenter.ui.hide
+import com.junka.jnkrickmorty.presenter.ui.observer
+import com.junka.jnkrickmorty.presenter.ui.show
+import com.junka.jnkrickmorty.vo.Resource
 
 class MainFragment : Fragment() {
 
-    private lateinit var viewModel: MainFragmentViewModel
+    private val viewModel by viewModels<MainFragmentViewModel> { VMFactory(RepoImpl(DataSource())) }
+
+    private val characterAdapter by lazy { CharactersAdapter(onClickListener = viewModel::onCharacterItemClick) }
 
     private lateinit var binding: FragmentMainBinding
 
@@ -23,18 +34,39 @@ class MainFragment : Fragment() {
 
         binding = FragmentMainBinding.inflate(inflater)
 
-        viewModel = ViewModelProviders.of(this).get(MainFragmentViewModel::class.java)
-
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        with(binding) {
-            goNextFragment.setOnClickListener {
-                findNavController().navigate(R.id.navigation_character_fragment)
+        setUpRecyclerView()
+
+        with(viewModel) {
+            observer(allCharacters) { result ->
+                when(result){
+                    is Resource.Loading ->{
+                        binding.loading.show()
+                    }
+                    is Resource.Success->{
+                        binding.loading.hide()
+                        characterAdapter.characters = result.data
+                    }
+                    is Resource.Failure->{
+
+                    }
+                }
+
             }
         }
+    }
+
+    private fun setUpRecyclerView()= with(binding){
+        listCharacters.apply {
+            layoutManager = LinearLayoutManager(requireContext())
+            addItemDecoration(DividerItemDecoration(requireContext(),DividerItemDecoration.VERTICAL))
+            adapter = characterAdapter
+        }
+
     }
 }
