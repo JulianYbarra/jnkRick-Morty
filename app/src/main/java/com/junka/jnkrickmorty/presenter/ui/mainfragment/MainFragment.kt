@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -44,19 +45,30 @@ class MainFragment : Fragment() {
 
         with(viewModel) {
             observer(allCharacters) { result ->
-                when(result){
-                    is Resource.Loading ->{
+                when (result) {
+                    is Resource.Loading -> {
                         binding.loading.show()
                     }
-                    is Resource.Success->{
+                    is Resource.Success -> {
                         binding.loading.hide()
                         characterAdapter.characters = result.data
                     }
-                    is Resource.Failure->{
-
+                    is Resource.Failure -> {
+                        Toast.makeText(
+                            requireContext(),
+                            "Ocurrio un error " + result.exception.message,
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                 }
-
+            }
+            observer(onNavigationToCharacterDetail) { event ->
+                event.getContentIfNotHandled()?.let { character ->
+                    val bundle = Bundle().apply {
+                        putParcelable("character", character)
+                    }
+                    findNavController().navigate(R.id.navigation_character_fragment, bundle)
+                }
             }
         }
     }

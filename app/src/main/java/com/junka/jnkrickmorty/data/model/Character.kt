@@ -1,5 +1,9 @@
 package com.junka.jnkrickmorty.data.model
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class Character(
     val id: Int = 0,
     val name: String = "",
@@ -13,4 +17,4 @@ data class Character(
     val episode: List<String>? = null,
     val url: String = "",
     val created: String = ""
-)
+) : Parcelable

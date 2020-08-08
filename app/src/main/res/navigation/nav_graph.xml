@@ -13,10 +13,17 @@
         <action
             android:id="@+id/action_navigation_main_fragment_to_navigation_character_fragment"
             app:destination="@id/navigation_character_fragment" />
+
     </fragment>
     <fragment
         android:id="@+id/navigation_character_fragment"
         android:name="com.junka.jnkrickmorty.presenter.ui.characters.CharacterFragment"
         android:label="fragment_character"
-        tools:layout="@layout/fragment_character" />
+        tools:layout="@layout/fragment_character" >
+        <argument
+            android:name="character"
+            app:argType="com.junka.jnkrickmorty.data.model.Character"
+            app:nullable="true"
+            android:defaultValue="@null" />
+    </fragment>
 </navigation>
