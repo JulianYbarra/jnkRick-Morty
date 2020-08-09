@@ -6,7 +6,7 @@ import com.junka.jnkrickmorty.vo.Resource
 
 class RepoImpl(private val dataSource: DataSource) : Repo {
 
-    override fun getAllCharacters(): Resource<List<Character>> {
-        return dataSource.charactersList
+    override suspend fun getAllCharacters(page : Int): Resource<List<Character>> {
+        return dataSource.getAllCharacter(page)
     }
 }

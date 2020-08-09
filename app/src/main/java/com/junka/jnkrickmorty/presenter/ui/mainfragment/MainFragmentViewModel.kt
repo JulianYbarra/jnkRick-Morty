@@ -15,7 +15,7 @@ class MainFragmentViewModel(private val repo: Repo) : ViewModel() {
     val allCharacters = liveData(Dispatchers.IO) {
         emit(Resource.Loading())
         try {
-            emit(repo.getAllCharacters())
+            emit(repo.getAllCharacters(1))
         } catch (e: Exception) {
             emit(Resource.Failure(e))
         }

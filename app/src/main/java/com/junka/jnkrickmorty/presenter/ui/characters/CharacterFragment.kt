@@ -7,13 +7,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import com.junka.jnkrickmorty.R
 import com.junka.jnkrickmorty.data.model.Character
 import com.junka.jnkrickmorty.databinding.FragmentCharacterBinding
 
 class CharacterFragment : Fragment() {
 
-    private lateinit var viewModel: CharacterViewModel
+    private val viewModel: CharacterViewModel by viewModels()
     private lateinit var binding : FragmentCharacterBinding
 
     private lateinit var character : Character
@@ -35,11 +36,6 @@ class CharacterFragment : Fragment() {
         binding = FragmentCharacterBinding.inflate(inflater)
 
         return binding.root
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(CharacterViewModel::class.java)
     }
 
 }

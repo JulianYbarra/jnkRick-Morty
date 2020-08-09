@@ -4,5 +4,5 @@ import com.junka.jnkrickmorty.data.model.Character
 import com.junka.jnkrickmorty.vo.Resource
 
 interface Repo {
-    fun getAllCharacters() : Resource<List<Character>>
+    suspend fun getAllCharacters(page : Int) : Resource<List<Character>>
 }

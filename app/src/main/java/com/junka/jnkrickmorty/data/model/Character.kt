@@ -1,6 +1,7 @@
 package com.junka.jnkrickmorty.data.model
 
 import android.os.Parcelable
+import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
@@ -18,3 +19,11 @@ data class Character(
     val url: String = "",
     val created: String = ""
 ) : Parcelable
+
+
+data class CharacterResponse(
+    @SerializedName("info")
+    val info : Info,
+    @SerializedName("results")
+    val results : List<Character>
+)
