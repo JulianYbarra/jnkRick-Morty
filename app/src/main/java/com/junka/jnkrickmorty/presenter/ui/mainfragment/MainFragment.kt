@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -42,35 +43,53 @@ class MainFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setUpRecyclerView()
+        setUpSearchView()
+        setUpObservers()
 
-        with(viewModel) {
-            observer(allCharacters) { result ->
-                when (result) {
-                    is Resource.Loading -> {
-                        binding.loading.show()
-                    }
-                    is Resource.Success -> {
-                        binding.loading.hide()
-                        characterAdapter.characters = result.data
-                    }
-                    is Resource.Failure -> {
-                        Toast.makeText(
-                            requireContext(),
-                            "Ocurrio un error " + result.exception.message,
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
+    }
+
+    private fun setUpObservers() = with(viewModel) {
+        observer(allCharacters) { result ->
+            when (result) {
+                is Resource.Loading -> {
+                    binding.loading.show()
                 }
-            }
-            observer(onNavigationToCharacterDetail) { event ->
-                event.getContentIfNotHandled()?.let { character ->
-                    val bundle = Bundle().apply {
-                        putParcelable("character", character)
-                    }
-                    findNavController().navigate(R.id.navigation_character_fragment, bundle)
+                is Resource.Success -> {
+                    binding.loading.hide()
+                    characterAdapter.characters = result.data
+                }
+                is Resource.Failure -> {
+                    Toast.makeText(
+                        requireContext(),
+                        "Ocurrio un error " + result.exception.message,
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
         }
+        observer(onNavigationToCharacterDetail) { event ->
+            event.getContentIfNotHandled()?.let { character ->
+
+
+                val bundle = Bundle().apply {
+                    putParcelable("character", character)
+                }
+                findNavController().navigate(R.id.action_navigation_main_fragment_to_navigation_character_fragment, bundle)
+            }
+        }
+    }
+
+    private fun setUpSearchView() = with(binding){
+        inputSearch.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(p0: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(p0: String?): Boolean {
+                return false
+            }
+
+        })
     }
 
     private fun setUpRecyclerView()= with(binding){

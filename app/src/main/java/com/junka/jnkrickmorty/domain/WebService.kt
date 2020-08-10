@@ -6,6 +6,6 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface WebService {
-    @GET("character/?page=")
-    suspend fun getAllCharacter(@Query("count") count : Int) : CharacterResponse
+    @GET("character/")
+    suspend fun getAllCharacter(@Query("page") page : Int) : CharacterResponse
 }
