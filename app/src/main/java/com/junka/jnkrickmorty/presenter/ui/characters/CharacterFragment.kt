@@ -11,6 +11,7 @@ import androidx.fragment.app.viewModels
 import com.junka.jnkrickmorty.R
 import com.junka.jnkrickmorty.data.model.Character
 import com.junka.jnkrickmorty.databinding.FragmentCharacterBinding
+import com.junka.jnkrickmorty.presenter.ui.load
 
 class CharacterFragment : Fragment() {
 
@@ -24,7 +25,6 @@ class CharacterFragment : Fragment() {
 
         requireArguments().let {
             character = it.getParcelable("character")!!
-            Log.d("Detalles", character.toString())
         }
     }
 
@@ -36,6 +36,21 @@ class CharacterFragment : Fragment() {
         binding = FragmentCharacterBinding.inflate(inflater)
 
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        setUpCharacter()
+    }
+
+    private fun setUpCharacter() = with(binding){
+        characterImage.load(character.image)
+        characterName.text = character.name
+        characterStatus.text = character.status
+        characterSpecies.text = character.species
+        characterGender.text = character.gender
+        characterLocationName.text = character.location?.name
     }
 
 }
