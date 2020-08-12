@@ -1,24 +1,35 @@
 package com.junka.jnkrickmorty.presenter.ui.characters
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.junka.jnkrickmorty.R
+import com.junka.jnkrickmorty.AppDatabase
+import com.junka.jnkrickmorty.data.DataSource
 import com.junka.jnkrickmorty.data.model.Character
+import com.junka.jnkrickmorty.data.model.CharacterEntity
 import com.junka.jnkrickmorty.databinding.FragmentCharacterBinding
+import com.junka.jnkrickmorty.domain.RepoImpl
 import com.junka.jnkrickmorty.presenter.ui.load
+import com.junka.jnkrickmorty.presenter.ui.mainfragment.VMFactory
 
 class CharacterFragment : Fragment() {
 
-    private val viewModel: CharacterViewModel by viewModels()
-    private lateinit var binding : FragmentCharacterBinding
+    private val viewModel by viewModels<CharacterViewModel> {
+        VMFactory(
+            RepoImpl(
+                DataSource(
+                    AppDatabase.getDatabase(requireActivity().applicationContext)
+                )
+            )
+        )
+    }
 
-    private lateinit var character : Character
+    private lateinit var binding: FragmentCharacterBinding
+
+    private lateinit var character: Character
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,9 +53,28 @@ class CharacterFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setUpCharacter()
+        setUpOnClickFavorite()
     }
 
-    private fun setUpCharacter() = with(binding){
+    private fun setUpOnClickFavorite() = with(binding) {
+        characterAddToFavorite.setOnClickListener {
+
+            val entity = CharacterEntity(
+                character.id,
+                character.name,
+                character.status,
+                character.species,
+                character.type,
+                character.gender,
+                character.image,
+                character.url,
+                character.created
+            )
+            viewModel.addToFavorite(entity)
+        }
+    }
+
+    private fun setUpCharacter() = with(binding) {
         characterImage.load(character.image)
         characterName.text = character.name
         characterStatus.text = character.status

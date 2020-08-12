@@ -1,13 +1,11 @@
 package com.junka.jnkrickmorty.presenter.ui
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.junka.jnkrickmorty.R
-import com.junka.jnkrickmorty.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 

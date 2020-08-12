@@ -11,6 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.junka.jnkrickmorty.AppDatabase
 import com.junka.jnkrickmorty.R
 import com.junka.jnkrickmorty.data.DataSource
 import com.junka.jnkrickmorty.databinding.FragmentMainBinding
@@ -23,7 +24,15 @@ import com.junka.jnkrickmorty.vo.Resource
 
 class MainFragment : Fragment() {
 
-    private val viewModel by viewModels<MainFragmentViewModel> { VMFactory(RepoImpl(DataSource())) }
+    private val viewModel by viewModels<MainFragmentViewModel> {
+        VMFactory(
+            RepoImpl(
+                DataSource(
+                    AppDatabase.getDatabase(requireActivity().applicationContext)
+                )
+            )
+        )
+    }
 
     private val characterAdapter by lazy { CharactersAdapter(onClickListener = viewModel::onCharacterItemClick) }
 
@@ -45,8 +54,9 @@ class MainFragment : Fragment() {
         setUpRecyclerView()
         setUpSearchView()
         setUpObservers()
-
+        setUpNavigationToFavorites()
     }
+
 
     private fun setUpObservers() = with(viewModel) {
         observer(allCharacters) { result ->
@@ -100,4 +110,11 @@ class MainFragment : Fragment() {
         }
 
     }
+
+    private fun setUpNavigationToFavorites() = with(binding) {
+        navigateToFavorites.setOnClickListener {
+            findNavController().navigate(R.id.action_navigation_main_fragment_to_navigation_favorites_fragment)
+        }
+    }
+
 }
