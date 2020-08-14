@@ -8,13 +8,19 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.junka.jnkrickmorty.AppDatabase
 import com.junka.jnkrickmorty.R
 import com.junka.jnkrickmorty.data.DataSource
+import com.junka.jnkrickmorty.data.model.Character
 import com.junka.jnkrickmorty.databinding.FragmentFavoritesBinding
 import com.junka.jnkrickmorty.domain.RepoImpl
+import com.junka.jnkrickmorty.presenter.ui.adapter.CharactersAdapter
+import com.junka.jnkrickmorty.presenter.ui.hide
 import com.junka.jnkrickmorty.presenter.ui.mainfragment.VMFactory
 import com.junka.jnkrickmorty.presenter.ui.observer
+import com.junka.jnkrickmorty.presenter.ui.show
 import com.junka.jnkrickmorty.vo.Resource
 
 class FavoritesFragment : Fragment() {
@@ -28,6 +34,8 @@ class FavoritesFragment : Fragment() {
             )
         )
     }
+
+    private val characterAdapter by lazy { CharactersAdapter(onClickListener = viewModel::onCharacterItemClick) }
 
     private lateinit var binding : FragmentFavoritesBinding
 
@@ -44,20 +52,39 @@ class FavoritesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        with(viewModel){
-            observer(favoritesCharacters){
-                when(it){
-                    is Resource.Loading ->{
+        setUpRecyclerView()
+        setUpObservers()
+    }
 
-                    }
-                    is Resource.Success ->{
-                        Log.d("tag", "favorites: ${it.data}")
-                    }
-                    is Resource.Failure ->{
-                        Toast.makeText(requireContext(), "Error al obtener los favoritos", Toast.LENGTH_SHORT).show()
-                    }
+    private fun setUpObservers()  =  with(viewModel){
+        observer(favoritesCharacters){result ->
+            when (result) {
+                is Resource.Loading -> {
+                    binding.loading.show()
+                }
+                is Resource.Success -> {
+                    binding.loading.hide()
+                    characterAdapter.characters = result.data.map { Character(it.id,it.name,it.status,it.species,it.type,it.gender,null,null,it.image,null,it.url,it.created) }
+                }
+                is Resource.Failure -> {
+                    Toast.makeText(
+                        requireContext(),
+                        "Ocurrio un error " + result.exception.message,
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
+        }
+    }
+
+    private fun setUpRecyclerView()= with(binding){
+        listCharacters.apply {
+            layoutManager = LinearLayoutManager(requireContext())
+            addItemDecoration(
+                DividerItemDecoration(requireContext(),
+                    DividerItemDecoration.VERTICAL)
+            )
+            adapter = characterAdapter
         }
     }
 

@@ -80,7 +80,6 @@ class MainFragment : Fragment() {
         observer(onNavigationToCharacterDetail) { event ->
             event.getContentIfNotHandled()?.let { character ->
 
-
                 val bundle = Bundle().apply {
                     putParcelable("character", character)
                 }

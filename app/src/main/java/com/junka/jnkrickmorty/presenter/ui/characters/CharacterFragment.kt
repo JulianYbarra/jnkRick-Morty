@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.junka.jnkrickmorty.AppDatabase
@@ -71,6 +72,8 @@ class CharacterFragment : Fragment() {
                 character.created
             )
             viewModel.addToFavorite(entity)
+
+            Toast.makeText(requireContext(), "${character.name} save", Toast.LENGTH_SHORT).show()
         }
     }
 
