@@ -7,12 +7,5 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitClient {
 
-    private val baseUrl = "https://rickandmortyapi.com/api/"
 
-    val webService by lazy {
-        Retrofit.Builder()
-            .baseUrl(baseUrl)
-            .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
-            .build().create(WebService::class.java)
-    }
 }

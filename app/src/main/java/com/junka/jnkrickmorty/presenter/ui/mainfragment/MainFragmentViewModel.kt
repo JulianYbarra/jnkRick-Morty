@@ -1,5 +1,6 @@
 package com.junka.jnkrickmorty.presenter.ui.mainfragment
 
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
 import com.junka.jnkrickmorty.data.model.Character
 import com.junka.jnkrickmorty.domain.Repo
@@ -7,7 +8,7 @@ import com.junka.jnkrickmorty.presenter.ui.Event
 import com.junka.jnkrickmorty.vo.Resource
 import kotlinx.coroutines.Dispatchers
 
-class MainFragmentViewModel(private val repo: Repo) : ViewModel() {
+class MainFragmentViewModel @ViewModelInject constructor(private val repo: Repo) : ViewModel() {
 
     private val _onNavigationToCharacterDetail = MutableLiveData<Event<Character>>()
     val onNavigationToCharacterDetail: LiveData<Event<Character>> get() = _onNavigationToCharacterDetail
@@ -23,11 +24,5 @@ class MainFragmentViewModel(private val repo: Repo) : ViewModel() {
 
     fun onCharacterItemClick(character: Character){
         _onNavigationToCharacterDetail.value = Event(character)
-    }
-}
-
-class VMFactory(private val repo: Repo) : ViewModelProvider.Factory {
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return modelClass.getConstructor(Repo::class.java).newInstance(repo)
     }
 }

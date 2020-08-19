@@ -4,8 +4,9 @@ import com.junka.jnkrickmorty.data.DataSource
 import com.junka.jnkrickmorty.data.model.Character
 import com.junka.jnkrickmorty.data.model.CharacterEntity
 import com.junka.jnkrickmorty.vo.Resource
+import javax.inject.Inject
 
-class RepoImpl(private val dataSource: DataSource) : Repo {
+class RepoImpl @Inject constructor(private val dataSource: DataSource) : Repo {
 
     override suspend fun getAllCharacters(page : Int): Resource<List<Character>> {
         return dataSource.getAllCharacter(page)

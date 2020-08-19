@@ -11,28 +11,19 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.junka.jnkrickmorty.AppDatabase
 import com.junka.jnkrickmorty.R
-import com.junka.jnkrickmorty.data.DataSource
 import com.junka.jnkrickmorty.databinding.FragmentMainBinding
-import com.junka.jnkrickmorty.domain.RepoImpl
 import com.junka.jnkrickmorty.presenter.ui.adapter.CharactersAdapter
 import com.junka.jnkrickmorty.presenter.ui.hide
 import com.junka.jnkrickmorty.presenter.ui.observer
 import com.junka.jnkrickmorty.presenter.ui.show
 import com.junka.jnkrickmorty.vo.Resource
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainFragment : Fragment() {
 
-    private val viewModel by viewModels<MainFragmentViewModel> {
-        VMFactory(
-            RepoImpl(
-                DataSource(
-                    AppDatabase.getDatabase(requireActivity().applicationContext)
-                )
-            )
-        )
-    }
+    private val viewModel by viewModels<MainFragmentViewModel>()
 
     private val characterAdapter by lazy { CharactersAdapter(onClickListener = viewModel::onCharacterItemClick) }
 

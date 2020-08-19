@@ -1,7 +1,6 @@
 package com.junka.jnkrickmorty.presenter.ui.favorites
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,30 +9,19 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.junka.jnkrickmorty.AppDatabase
-import com.junka.jnkrickmorty.R
-import com.junka.jnkrickmorty.data.DataSource
 import com.junka.jnkrickmorty.data.model.Character
 import com.junka.jnkrickmorty.databinding.FragmentFavoritesBinding
-import com.junka.jnkrickmorty.domain.RepoImpl
 import com.junka.jnkrickmorty.presenter.ui.adapter.CharactersAdapter
 import com.junka.jnkrickmorty.presenter.ui.hide
-import com.junka.jnkrickmorty.presenter.ui.mainfragment.VMFactory
 import com.junka.jnkrickmorty.presenter.ui.observer
 import com.junka.jnkrickmorty.presenter.ui.show
 import com.junka.jnkrickmorty.vo.Resource
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class FavoritesFragment : Fragment() {
 
-    private val viewModel by viewModels<FavoritesViewModel> {
-        VMFactory(
-            RepoImpl(
-                DataSource(
-                    AppDatabase.getDatabase(requireActivity().applicationContext)
-                )
-            )
-        )
-    }
+    private val viewModel by viewModels<FavoritesViewModel>()
 
     private val characterAdapter by lazy { CharactersAdapter(onClickListener = viewModel::onCharacterItemClick) }
 
@@ -87,8 +75,6 @@ class FavoritesFragment : Fragment() {
             adapter = characterAdapter
         }
     }
-
-
 
 
 }

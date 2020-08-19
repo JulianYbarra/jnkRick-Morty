@@ -1,5 +1,6 @@
 package com.junka.jnkrickmorty.presenter.ui.favorites
 
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
 import com.junka.jnkrickmorty.data.model.Character
 import com.junka.jnkrickmorty.domain.Repo
@@ -8,7 +9,7 @@ import com.junka.jnkrickmorty.vo.Resource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class FavoritesViewModel(private val repo: Repo) : ViewModel() {
+class FavoritesViewModel  @ViewModelInject constructor(private val repo: Repo) : ViewModel() {
 
     private val _onNavigationToCharacterDetail = MutableLiveData<Event<Character>>()
     val onNavigationToCharacterDetail: LiveData<Event<Character>> get() = _onNavigationToCharacterDetail

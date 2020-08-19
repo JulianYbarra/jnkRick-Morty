@@ -7,26 +7,16 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.junka.jnkrickmorty.AppDatabase
-import com.junka.jnkrickmorty.data.DataSource
 import com.junka.jnkrickmorty.data.model.Character
 import com.junka.jnkrickmorty.data.model.CharacterEntity
 import com.junka.jnkrickmorty.databinding.FragmentCharacterBinding
-import com.junka.jnkrickmorty.domain.RepoImpl
 import com.junka.jnkrickmorty.presenter.ui.load
-import com.junka.jnkrickmorty.presenter.ui.mainfragment.VMFactory
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class CharacterFragment : Fragment() {
 
-    private val viewModel by viewModels<CharacterViewModel> {
-        VMFactory(
-            RepoImpl(
-                DataSource(
-                    AppDatabase.getDatabase(requireActivity().applicationContext)
-                )
-            )
-        )
-    }
+    private val viewModel by viewModels<CharacterViewModel>()
 
     private lateinit var binding: FragmentCharacterBinding
 
