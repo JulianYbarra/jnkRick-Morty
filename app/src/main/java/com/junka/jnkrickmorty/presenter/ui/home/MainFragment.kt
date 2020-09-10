@@ -1,4 +1,4 @@
-package com.junka.jnkrickmorty.presenter.ui.mainfragment
+package com.junka.jnkrickmorty.presenter.ui.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
