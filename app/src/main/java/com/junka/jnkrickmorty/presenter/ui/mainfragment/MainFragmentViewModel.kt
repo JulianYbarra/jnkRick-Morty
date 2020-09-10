@@ -2,7 +2,7 @@ package com.junka.jnkrickmorty.presenter.ui.mainfragment
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
-import com.junka.jnkrickmorty.data.model.Character
+import com.junka.jnkrickmorty.data.model.CharacterRemote
 import com.junka.jnkrickmorty.domain.Repo
 import com.junka.jnkrickmorty.core.Event
 import com.junka.jnkrickmorty.core.Resource
@@ -10,8 +10,8 @@ import kotlinx.coroutines.Dispatchers
 
 class MainFragmentViewModel @ViewModelInject constructor(private val repo: Repo) : ViewModel() {
 
-    private val _onNavigationToCharacterDetail = MutableLiveData<Event<Character>>()
-    val onNavigationToCharacterDetail: LiveData<Event<Character>> get() = _onNavigationToCharacterDetail
+    private val _onNavigationToCharacterDetail = MutableLiveData<Event<CharacterRemote>>()
+    val onNavigationToCharacterDetail: LiveData<Event<CharacterRemote>> get() = _onNavigationToCharacterDetail
 
     val allCharacters = liveData(Dispatchers.IO) {
         emit(Resource.Loading())
@@ -22,7 +22,7 @@ class MainFragmentViewModel @ViewModelInject constructor(private val repo: Repo)
         }
     }
 
-    fun onCharacterItemClick(character: Character){
+    fun onCharacterItemClick(character: CharacterRemote){
         _onNavigationToCharacterDetail.value = Event(character)
     }
 }

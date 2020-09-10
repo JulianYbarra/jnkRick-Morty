@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.junka.jnkrickmorty.data.model.Character
+import com.junka.jnkrickmorty.data.model.CharacterRemote
 import com.junka.jnkrickmorty.databinding.FragmentFavoritesBinding
 import com.junka.jnkrickmorty.presenter.ui.adapter.CharactersAdapter
 import com.junka.jnkrickmorty.core.hide
@@ -52,7 +52,7 @@ class FavoritesFragment : Fragment() {
                 }
                 is Resource.Success -> {
                     binding.loading.hide()
-                    characterAdapter.characters = result.data.map { Character(it.id,it.name,it.status,it.species,it.type,it.gender,null,null,it.image,null,it.url,it.created) }
+                    characterAdapter.characters = result.data.map { CharacterRemote(it.id,it.name,it.status,it.species,it.type,it.gender,null,null,it.image,null,it.url,it.created) }
                 }
                 is Resource.Failure -> {
                     Toast.makeText(

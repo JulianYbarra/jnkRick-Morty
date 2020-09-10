@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.junka.jnkrickmorty.data.model.CharacterRemote
 import com.junka.jnkrickmorty.data.model.Character
-import com.junka.jnkrickmorty.data.model.CharacterEntity
 import com.junka.jnkrickmorty.databinding.FragmentCharacterBinding
 import com.junka.jnkrickmorty.core.load
 import dagger.hilt.android.AndroidEntryPoint
@@ -20,7 +20,7 @@ class CharacterFragment : Fragment() {
 
     private lateinit var binding: FragmentCharacterBinding
 
-    private lateinit var character: Character
+    private lateinit var character: CharacterRemote
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,7 +50,7 @@ class CharacterFragment : Fragment() {
     private fun setUpOnClickFavorite() = with(binding) {
         characterAddToFavorite.setOnClickListener {
 
-            val entity = CharacterEntity(
+            val entity = Character(
                 character.id,
                 character.name,
                 character.status,

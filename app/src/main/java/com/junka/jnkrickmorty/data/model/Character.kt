@@ -3,11 +3,27 @@ package com.junka.jnkrickmorty.data.model
 import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
-@Parcelize
+@Entity
 data class Character(
+    @PrimaryKey()
+    val id: Int,
+    val name: String = "",
+    val status: String = "",
+    val species: String = "",
+    val type: String = "",
+    val gender: String = "",
+    //val origin: Origin? = null,
+    //val location: Location? = null,
+    val image: String = "",
+    //val episode: List<String>? = null,
+    val url: String = "",
+    val created: String = ""
+)
+
+@Parcelize
+data class CharacterRemote(
     val id: Int = 0,
     val name: String = "",
     val status: String = "",
@@ -23,26 +39,16 @@ data class Character(
 ) : Parcelable
 
 
-data class CharacterResponse(
-    @SerializedName("info")
-    val info : Info,
-    @SerializedName("results")
-    val results : List<Character>
+data class AllCharactersResponse(
+    val info: Info,
+    val results: List<CharacterRemote>
 )
 
-@Entity
-data class CharacterEntity(
-    @PrimaryKey()
-    val id: Int,
-    val name: String = "",
-    val status: String = "",
-    val species: String = "",
-    val type: String = "",
-    val gender: String = "",
-    //val origin: Origin? = null,
-    //val location: Location? = null,
-    val image: String = "",
-    //val episode: List<String>? = null,
-    val url: String = "",
-    val created: String = ""
+data class SingleCharacterResponse(
+    val result : CharacterRemote
 )
+
+data class MultipleCharacterResponse(
+    val results : List<CharacterRemote>
+)
+

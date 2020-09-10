@@ -4,23 +4,23 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.junka.jnkrickmorty.data.model.Character
+import com.junka.jnkrickmorty.data.model.CharacterRemote
 import com.junka.jnkrickmorty.databinding.ItemCharacterBinding
 import com.junka.jnkrickmorty.presenter.ui.base.BaseViewHolder
 import kotlin.properties.Delegates
 
 class CharactersAdapter(
-    characters: List<Character> = emptyList(),
-    val onClickListener: (Character) -> Unit
+    characters: List<CharacterRemote> = emptyList(),
+    val onClickListener: (CharacterRemote) -> Unit
 ) : RecyclerView.Adapter<BaseViewHolder<*>>() {
 
-    var characters: List<Character> by Delegates.observable(characters) { _, _, _ ->
+    var characters: List<CharacterRemote> by Delegates.observable(characters) { _, _, _ ->
         notifyDataSetChanged()
     }
 
-    inner class ViewHolder(private val binding: ItemCharacterBinding) : BaseViewHolder<Character>(binding.root){
+    inner class ViewHolder(private val binding: ItemCharacterBinding) : BaseViewHolder<CharacterRemote>(binding.root){
 
-        override fun bind(item: Character, position: Int) {
+        override fun bind(item: CharacterRemote, position: Int) {
             with(binding) {
 
                 Glide.with(this.root).load(item.image).into(characterImage)
