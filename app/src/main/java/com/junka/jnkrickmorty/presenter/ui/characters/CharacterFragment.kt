@@ -50,19 +50,6 @@ class CharacterFragment : Fragment() {
     private fun setUpOnClickFavorite() = with(binding) {
         characterAddToFavorite.setOnClickListener {
 
-            val entity = Character(
-                character.id,
-                character.name,
-                character.status,
-                character.species,
-                character.type,
-                character.gender,
-                character.image,
-                character.url,
-                character.created
-            )
-            viewModel.addToFavorite(entity)
-
             Toast.makeText(requireContext(), "${character.name} save", Toast.LENGTH_SHORT).show()
         }
     }

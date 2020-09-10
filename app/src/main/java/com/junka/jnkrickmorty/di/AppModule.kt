@@ -21,7 +21,7 @@ object AppModule {
     @Singleton
     @Provides
     fun providerRoomInstance(@ApplicationContext context: Context) =
-        Room.databaseBuilder(context, AppDatabase::class.java, "jnk_rm_database").build()
+        Room.databaseBuilder(context, AppDatabase::class.java, "jnk_rm_database").fallbackToDestructiveMigration().build()
 
     @Singleton
     @Provides

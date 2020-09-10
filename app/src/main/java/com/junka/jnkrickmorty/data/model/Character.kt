@@ -41,7 +41,7 @@ data class CharacterRemote(
     val species: String = "",
     val type: String = "",
     val gender: String = "",
-    val origin: Origin? = null,
+    val origin: OriginRemote? = null,
     val location: Location? = null,
     val image: String = "",
     val episode: List<String>? = null,
