@@ -3,7 +3,7 @@ package com.junka.jnkrickmorty.domain
 import com.junka.jnkrickmorty.data.DataSource
 import com.junka.jnkrickmorty.data.model.Character
 import com.junka.jnkrickmorty.data.model.CharacterEntity
-import com.junka.jnkrickmorty.vo.Resource
+import com.junka.jnkrickmorty.core.Resource
 import javax.inject.Inject
 
 class RepoImpl @Inject constructor(private val dataSource: DataSource) : Repo {

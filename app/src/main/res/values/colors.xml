@@ -4,17 +4,22 @@
     <color name="colorPrimaryDark">#04294F</color>
     <color name="colorAccent">#FFB400</color>
 
-    <color name="colorIcons">#B4B4B4</color>
+    <color name="colorIcons">#D1D2D4</color>
     <color name="colorTextPlaceholder">#AFAFAF</color>
-    <color name="colorText">#1F2E35</color>
+
+    <color name="colorButton">#B0ACAD</color>
+
+
+    <color name="colorBackground">#1F2120</color>
+    <color name="colorBackgroundCards">#2B2E33</color>
+    <color name="colorText">#DBDBDC</color>
+
     <color name="colorWhite">#FFFFFF</color>
 
-    <color name="colorBlue">#CCEFF9</color>
-    <color name="colorTextBlue">#006D8C</color>
+    <color name="colorLila">#A565AA</color>
+    <color name="colorRed">#E95B69</color>
+    <color name="colorLightBlue">#3DB5A3</color>
+    <color name="colorYellow">#F7B93C</color>
 
-    <color name="colorYellow">#F9E7CC</color>
-    <color name="colorTextYellow">#B9730A</color>
 
-    <color name="colorRed">#F9CCCC</color>
-    <color name="colorTextRed">#E20909</color>
 </resources>

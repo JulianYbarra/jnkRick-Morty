@@ -2,8 +2,7 @@ package com.junka.jnkrickmorty.data
 
 import com.junka.jnkrickmorty.data.model.Character
 import com.junka.jnkrickmorty.data.model.CharacterEntity
-import com.junka.jnkrickmorty.vo.Resource
-import com.junka.jnkrickmorty.vo.RetrofitClient
+import com.junka.jnkrickmorty.core.Resource
 
 interface DataSource {
 

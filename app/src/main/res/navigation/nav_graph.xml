@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/navigation_main_fragment"
         android:name="com.junka.jnkrickmorty.presenter.ui.mainfragment.MainFragment"
-        android:label="fragment_main"
+        android:label="Home"
         tools:layout="@layout/fragment_main" >
         <action
             android:id="@+id/action_navigation_main_fragment_to_navigation_character_fragment"

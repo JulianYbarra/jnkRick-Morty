@@ -12,10 +12,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.junka.jnkrickmorty.data.model.Character
 import com.junka.jnkrickmorty.databinding.FragmentFavoritesBinding
 import com.junka.jnkrickmorty.presenter.ui.adapter.CharactersAdapter
-import com.junka.jnkrickmorty.presenter.ui.hide
-import com.junka.jnkrickmorty.presenter.ui.observer
-import com.junka.jnkrickmorty.presenter.ui.show
-import com.junka.jnkrickmorty.vo.Resource
+import com.junka.jnkrickmorty.core.hide
+import com.junka.jnkrickmorty.core.observer
+import com.junka.jnkrickmorty.core.show
+import com.junka.jnkrickmorty.core.Resource
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

@@ -3,8 +3,8 @@ package com.junka.jnkrickmorty.di
 import android.content.Context
 import androidx.room.Room
 import com.google.gson.GsonBuilder
-import com.junka.jnkrickmorty.AppDatabase
-import com.junka.jnkrickmorty.domain.WebService
+import com.junka.jnkrickmorty.data.local.AppDatabase
+import com.junka.jnkrickmorty.domain.remote.WebService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

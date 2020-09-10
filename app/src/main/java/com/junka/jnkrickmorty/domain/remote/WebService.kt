@@ -1,4 +1,4 @@
-package com.junka.jnkrickmorty.domain
+package com.junka.jnkrickmorty.domain.remote
 
 import com.junka.jnkrickmorty.data.model.CharacterResponse
 

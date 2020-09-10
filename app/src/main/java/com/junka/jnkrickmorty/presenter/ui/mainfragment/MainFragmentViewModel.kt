@@ -4,8 +4,8 @@ import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
 import com.junka.jnkrickmorty.data.model.Character
 import com.junka.jnkrickmorty.domain.Repo
-import com.junka.jnkrickmorty.presenter.ui.Event
-import com.junka.jnkrickmorty.vo.Resource
+import com.junka.jnkrickmorty.core.Event
+import com.junka.jnkrickmorty.core.Resource
 import kotlinx.coroutines.Dispatchers
 
 class MainFragmentViewModel @ViewModelInject constructor(private val repo: Repo) : ViewModel() {

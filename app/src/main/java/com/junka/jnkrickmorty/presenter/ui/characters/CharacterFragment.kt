@@ -10,7 +10,7 @@ import androidx.fragment.app.viewModels
 import com.junka.jnkrickmorty.data.model.Character
 import com.junka.jnkrickmorty.data.model.CharacterEntity
 import com.junka.jnkrickmorty.databinding.FragmentCharacterBinding
-import com.junka.jnkrickmorty.presenter.ui.load
+import com.junka.jnkrickmorty.core.load
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

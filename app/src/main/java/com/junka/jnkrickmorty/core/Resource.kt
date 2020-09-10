@@ -1,4 +1,4 @@
-package com.junka.jnkrickmorty.vo
+package com.junka.jnkrickmorty.core
 
 import java.lang.Exception
 

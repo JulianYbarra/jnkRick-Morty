@@ -9,15 +9,14 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.junka.jnkrickmorty.R
 import com.junka.jnkrickmorty.databinding.FragmentMainBinding
 import com.junka.jnkrickmorty.presenter.ui.adapter.CharactersAdapter
-import com.junka.jnkrickmorty.presenter.ui.hide
-import com.junka.jnkrickmorty.presenter.ui.observer
-import com.junka.jnkrickmorty.presenter.ui.show
-import com.junka.jnkrickmorty.vo.Resource
+import com.junka.jnkrickmorty.core.hide
+import com.junka.jnkrickmorty.core.observer
+import com.junka.jnkrickmorty.core.show
+import com.junka.jnkrickmorty.core.Resource
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -95,7 +94,6 @@ class MainFragment : Fragment() {
     private fun setUpRecyclerView()= with(binding){
         listCharacters.apply {
             layoutManager = LinearLayoutManager(requireContext())
-            addItemDecoration(DividerItemDecoration(requireContext(),DividerItemDecoration.VERTICAL))
             adapter = characterAdapter
         }
 

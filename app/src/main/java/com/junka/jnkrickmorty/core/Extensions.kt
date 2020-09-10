@@ -1,10 +1,9 @@
-package com.junka.jnkrickmorty.presenter.ui
+package com.junka.jnkrickmorty.core
 
 import android.content.Context
 import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
-import androidx.activity.ComponentActivity
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer

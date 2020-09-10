@@ -1,4 +1,4 @@
-package com.junka.jnkrickmorty.presenter.ui
+package com.junka.jnkrickmorty.core
 
 
 data class Event<out T>(private val content : T) {

@@ -1,4 +1,4 @@
-package com.junka.jnkrickmorty.domain
+package com.junka.jnkrickmorty.domain.local
 
 import androidx.room.Dao
 import androidx.room.Insert

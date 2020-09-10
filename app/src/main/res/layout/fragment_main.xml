@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".presenter.ui.mainfragment.MainFragment">
+    tools:context=".presenter.ui.mainfragment.MainFragment"
+    android:background="@color/colorBackground">
 
 
     <SearchView
@@ -29,6 +30,7 @@
         android:id="@+id/loading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:progressTint="@color/colorLightBlue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -50,6 +52,7 @@
         android:id="@+id/navigateToFavorites"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/colorButton"
         android:text="@string/my_favorites"
         app:layout_constraintBottom_toBottomOf="parent" />
 

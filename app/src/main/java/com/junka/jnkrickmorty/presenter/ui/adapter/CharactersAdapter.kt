@@ -7,7 +7,6 @@ import com.bumptech.glide.Glide
 import com.junka.jnkrickmorty.data.model.Character
 import com.junka.jnkrickmorty.databinding.ItemCharacterBinding
 import com.junka.jnkrickmorty.presenter.ui.base.BaseViewHolder
-import com.junka.jnkrickmorty.presenter.ui.load
 import kotlin.properties.Delegates
 
 class CharactersAdapter(
