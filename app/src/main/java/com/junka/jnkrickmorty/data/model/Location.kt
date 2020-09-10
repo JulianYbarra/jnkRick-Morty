@@ -15,7 +15,6 @@ data class Location(
     val created: String
 ) : Parcelable
 
-
 data class LocationRemote(
     val id: Int,
     val name: String,
