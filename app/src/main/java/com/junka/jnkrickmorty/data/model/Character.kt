@@ -4,6 +4,7 @@ import android.os.Parcelable
 import androidx.room.*
 import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 @Entity
 data class Character(
     @PrimaryKey()
@@ -20,7 +21,7 @@ data class Character(
     val image: String = "",
     val url: String = "",
     val created: String = ""
-)
+) : Parcelable
 
 
 @DatabaseView

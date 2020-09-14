@@ -52,7 +52,9 @@ class FavoritesFragment : Fragment() {
                 }
                 is Resource.Success -> {
                     binding.loading.hide()
-                    characterAdapter.characters = result.data.map { CharacterRemote(it.id,it.name,it.status,it.species,it.type,it.gender,null,null,it.image,null,it.url,it.created) }
+                    characterAdapter.characters = result.data.map{
+                        CharacterRemote(it.id,it.name,it.status,it.species,it.type,it.gender,null,null,it.image,null,it.url,it.created)
+                    }
                 }
                 is Resource.Failure -> {
                     Toast.makeText(

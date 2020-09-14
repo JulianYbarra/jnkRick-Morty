@@ -18,7 +18,7 @@ class MainFragmentViewModel @ViewModelInject constructor(private val repo: Repo)
         try {
             emit(repo.getAllCharacters(1))
         } catch (e: Exception) {
-            emit(Resource.Failure(e))
+            emit(Resource.Failure<List<CharacterRemote>>(e))
         }
     }
 

@@ -6,6 +6,7 @@ import com.junka.jnkrickmorty.data.model.CharacterRemote
 import com.junka.jnkrickmorty.domain.Repo
 import com.junka.jnkrickmorty.core.Event
 import com.junka.jnkrickmorty.core.Resource
+import com.junka.jnkrickmorty.data.model.Character
 import kotlinx.coroutines.Dispatchers
 
 class FavoritesViewModel  @ViewModelInject constructor(private val repo: Repo) : ViewModel() {
@@ -18,7 +19,7 @@ class FavoritesViewModel  @ViewModelInject constructor(private val repo: Repo) :
         try {
             emit(repo.getCharactersFavorites())
         } catch (e: Exception) {
-            emit(Resource.Failure(e))
+            emit(Resource.Failure<List<Character>>(e))
         }
     }
 
