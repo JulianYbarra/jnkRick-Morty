@@ -29,7 +29,7 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun providerRetrofitInstance() =
+    fun providerRetrofitInstance(): Retrofit =
         Retrofit.Builder()
             .baseUrl("https://rickandmortyapi.com/api/")
             .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
@@ -37,5 +37,5 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun provideWebService(retrofit:Retrofit) = retrofit.create(WebService::class.java)
+    fun provideWebService(retrofit:Retrofit): WebService = retrofit.create(WebService::class.java)
 }

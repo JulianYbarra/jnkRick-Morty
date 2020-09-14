@@ -45,26 +45,7 @@ class FavoritesFragment : Fragment() {
     }
 
     private fun setUpObservers()  =  with(viewModel){
-        observer(favoritesCharacters){result ->
-            when (result) {
-                is Resource.Loading -> {
-                    binding.loading.show()
-                }
-                is Resource.Success -> {
-                    binding.loading.hide()
-                    characterAdapter.characters = result.data.map{
-                        CharacterRemote(it.id,it.name,it.status,it.species,it.type,it.gender,null,null,it.image,null,it.url,it.created)
-                    }
-                }
-                is Resource.Failure -> {
-                    Toast.makeText(
-                        requireContext(),
-                        "Ocurrio un error " + result.exception.message,
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-            }
-        }
+
     }
 
     private fun setUpRecyclerView()= with(binding){

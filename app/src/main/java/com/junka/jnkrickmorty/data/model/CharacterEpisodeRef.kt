@@ -27,7 +27,6 @@ data class CharacterWithEpisodes(
     val episodes: List<Episode>
 )
 
-
 data class EpisodeWithCharacters(
     @Embedded val episode: Episode,
     @Relation(
@@ -42,7 +41,6 @@ data class EpisodeWithCharacters(
     )
     val characters: List<CharacterAndLocation>
 )
-
 
 data class EpisodeWithCharactersAndLocation(
     @Embedded val episode: Episode,

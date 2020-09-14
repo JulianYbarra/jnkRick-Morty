@@ -1,11 +1,14 @@
 package com.junka.jnkrickmorty.presenter.ui.home
 
 import androidx.hilt.lifecycle.ViewModelInject
-import androidx.lifecycle.*
-import com.junka.jnkrickmorty.data.model.CharacterRemote
-import com.junka.jnkrickmorty.domain.Repo
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.liveData
 import com.junka.jnkrickmorty.core.Event
 import com.junka.jnkrickmorty.core.Resource
+import com.junka.jnkrickmorty.data.model.CharacterRemote
+import com.junka.jnkrickmorty.domain.Repo
 import kotlinx.coroutines.Dispatchers
 
 class MainFragmentViewModel @ViewModelInject constructor(private val repo: Repo) : ViewModel() {

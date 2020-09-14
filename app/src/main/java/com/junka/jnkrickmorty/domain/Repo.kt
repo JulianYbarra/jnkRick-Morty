@@ -6,7 +6,5 @@ import com.junka.jnkrickmorty.core.Resource
 
 interface Repo {
     suspend fun getAllCharacters(page : Int) : Resource<List<CharacterRemote>>
-
     suspend fun insert(character: Character)
-    suspend fun getCharactersFavorites() : Resource<List<Character>>
 }

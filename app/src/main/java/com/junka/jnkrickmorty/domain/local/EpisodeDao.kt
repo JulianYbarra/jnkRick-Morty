@@ -10,18 +10,23 @@ import com.junka.jnkrickmorty.data.model.EpisodeWithCharactersAndLocation
 @Dao
 interface EpisodeDao : BaseDao<Episode> {
 
+    @Query("SELECT * FROM Episode")
+    suspend fun getAllEpisode() : List<Episode>
+
+    @Query("SELECT * FROM Episode WHERE episodeId = :id LIMIT 1")
+    suspend fun getSingleEpisode(id : Long) : Episode
+
     @Transaction
     @Query("SELECT * FROM Episode")
-    fun getEpisodeWithCharacters(): List<EpisodeWithCharacters>
-
+    suspend fun getEpisodeWithCharacters(): List<EpisodeWithCharacters>
 
     @Transaction
     @Query("SELECT * FROM Episode WHERE episodeId = :id")
-    fun getEpisodeWithCharacters(id: Long): EpisodeWithCharactersAndLocation
+    suspend fun getEpisodeWithCharactersAndLocation(id: Long): EpisodeWithCharactersAndLocation
 
     @Transaction
     @Query("SELECT * FROM Episode")
-    fun getEpisodesWithCharacters(): List<EpisodeWithCharactersAndLocation>
+    suspend fun getEpisodesWithCharacters(): List<EpisodeWithCharactersAndLocation>
 
 }
 

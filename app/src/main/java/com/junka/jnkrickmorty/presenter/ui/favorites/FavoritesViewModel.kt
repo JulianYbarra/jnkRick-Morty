@@ -14,14 +14,6 @@ class FavoritesViewModel  @ViewModelInject constructor(private val repo: Repo) :
     private val _onNavigationToCharacterDetail = MutableLiveData<Event<CharacterRemote>>()
     val onNavigationToCharacterDetail: LiveData<Event<CharacterRemote>> get() = _onNavigationToCharacterDetail
 
-    val favoritesCharacters = liveData(Dispatchers.IO) {
-        emit(Resource.Loading())
-        try {
-            emit(repo.getCharactersFavorites())
-        } catch (e: Exception) {
-            emit(Resource.Failure<List<Character>>(e))
-        }
-    }
 
     fun onCharacterItemClick(character: CharacterRemote){
         _onNavigationToCharacterDetail.value = Event(character)

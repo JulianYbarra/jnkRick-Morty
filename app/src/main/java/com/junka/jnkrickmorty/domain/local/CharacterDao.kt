@@ -13,14 +13,17 @@ interface CharacterDao : BaseDao<Character> {
     @Query("SELECT * FROM Character")
     suspend fun getAll(): List<Character>
 
-
     @Transaction
     @Query("SELECT * FROM Character")
     fun getCharacterAndLocation(): List<CharacterAndLocation>
 
     @Transaction
-    @Query("SELECT * FROM Character")
-    fun getCharacterWithEpisodes(): List<CharacterWithEpisodes>
+    @Query("SELECT * FROM Character WHERE characterId = :id LIMIT 1")
+    fun getSingleCharacterAndLocation(id : Long): CharacterAndLocation
+
+    @Transaction
+    @Query("SELECT * FROM Character WHERE characterId = :id LIMIT 1")
+    fun getSingleCharacterWithEpisodes(id : Long): CharacterWithEpisodes
 
 
 }
