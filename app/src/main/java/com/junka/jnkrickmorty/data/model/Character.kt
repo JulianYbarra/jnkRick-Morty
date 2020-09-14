@@ -1,16 +1,14 @@
 package com.junka.jnkrickmorty.data.model
 
 import android.os.Parcelable
-import androidx.room.Embedded
-import androidx.room.Entity
-import androidx.room.PrimaryKey
-import androidx.room.Relation
+import androidx.room.*
 import kotlinx.android.parcel.Parcelize
 
 @Entity
 data class Character(
     @PrimaryKey()
-    val id: Int,
+    @ColumnInfo(name = "characterId")
+    val id: Long = 0,
     val name: String = "",
     val status: String = "",
     val species: String = "",
@@ -18,24 +16,27 @@ data class Character(
     val gender: String = "",
     @Embedded
     val origin: Origin? = null,
-    val location: Int,
+    val locationId: Long,
     val image: String = "",
     val url: String = "",
     val created: String = ""
 )
 
+
+@DatabaseView
 data class CharacterAndLocation(
     @Embedded val character: Character,
     @Relation(
-        parentColumn = "location",
-        entityColumn = "id"
+        parentColumn = "locationId",
+        entityColumn = "locationId",
+        entity = Location::class
     )
-    val location: Location? = null
+    val location: Location
 )
 
 @Parcelize
 data class CharacterRemote(
-    val id: Int = 0,
+    val id: Long = 0,
     val name: String = "",
     val status: String = "",
     val species: String = "",
