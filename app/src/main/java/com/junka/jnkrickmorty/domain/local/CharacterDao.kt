@@ -1,14 +1,16 @@
 package com.junka.jnkrickmorty.domain.local
 
-import androidx.room.Dao
-import androidx.room.Query
-import androidx.room.Transaction
+import androidx.room.*
 import com.junka.jnkrickmorty.data.model.Character
 import com.junka.jnkrickmorty.data.model.CharacterAndLocation
+import com.junka.jnkrickmorty.data.model.CharacterEpisodeRef
 import com.junka.jnkrickmorty.data.model.CharacterWithEpisodes
 
 @Dao
 interface CharacterDao : BaseDao<Character> {
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertCharacterEpisodeRef(characterEpisodeRef: CharacterEpisodeRef)
 
     @Query("SELECT * FROM Character")
     suspend fun getAll(): List<Character>
@@ -24,6 +26,4 @@ interface CharacterDao : BaseDao<Character> {
     @Transaction
     @Query("SELECT * FROM Character WHERE characterId = :id LIMIT 1")
     fun getSingleCharacterWithEpisodes(id : Long): CharacterWithEpisodes
-
-
 }

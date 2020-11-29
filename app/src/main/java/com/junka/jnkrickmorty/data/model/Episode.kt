@@ -29,8 +29,12 @@ data class EpisodeRemote(
     val episode: String = "",
     val characters: List<String> = listOf(),
     val url: String = "",
-    val created: String
+    val created: String = ""
 )
+
+fun EpisodeRemote.toEpisode() : Episode{
+    return Episode(id,name,airDate,episode, url,created)
+}
 
 data class AllEpisodesResponse(
     val info: Info,

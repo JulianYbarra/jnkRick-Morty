@@ -20,6 +20,7 @@ interface DataSource {
 
     //Local
     suspend fun insertCharacter(character: Character)
+    suspend fun insertCharacterEpisodeRef(characterEpisodeRef: CharacterEpisodeRef)
 
     suspend fun getAllCharacterCached(page: Int): Resource<List<CharacterAndLocation>>
     suspend fun getSingleCharacterCached(id: Long): Resource<CharacterAndLocation>

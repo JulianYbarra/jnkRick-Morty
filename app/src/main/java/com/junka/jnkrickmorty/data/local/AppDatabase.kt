@@ -12,7 +12,7 @@ import com.junka.jnkrickmorty.domain.local.LocationDao
 
 @Database(
     entities = [Character::class, CharacterEpisodeRef::class, Episode::class, Location::class],
-    version = 1,
+    version = 2,
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {

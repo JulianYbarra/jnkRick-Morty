@@ -1,15 +1,14 @@
 package com.junka.jnkrickmorty.presenter.ui.home
 
 import androidx.hilt.lifecycle.ViewModelInject
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.liveData
+import androidx.lifecycle.*
 import com.junka.jnkrickmorty.core.Event
 import com.junka.jnkrickmorty.core.Resource
 import com.junka.jnkrickmorty.data.model.CharacterRemote
 import com.junka.jnkrickmorty.domain.Repo
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class MainFragmentViewModel @ViewModelInject constructor(private val repo: Repo) : ViewModel() {
 
@@ -27,5 +26,17 @@ class MainFragmentViewModel @ViewModelInject constructor(private val repo: Repo)
 
     fun onCharacterItemClick(character: CharacterRemote){
         _onNavigationToCharacterDetail.value = Event(character)
+    }
+
+    fun test(){
+
+        viewModelScope.launch {
+
+            val episodes =withContext(Dispatchers.IO){
+                repo.getAllEpisode(1)
+            }
+
+
+        }
     }
 }

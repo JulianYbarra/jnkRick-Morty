@@ -63,4 +63,3 @@ data class SingleCharacterResponse(
 data class MultipleCharacterResponse(
     val results : List<CharacterRemote>
 )
-

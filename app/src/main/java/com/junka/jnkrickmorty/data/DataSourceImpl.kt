@@ -51,6 +51,10 @@ class DataSourceImpl @Inject constructor(
         appDatabase.characterDao().insert(character)
     }
 
+    override suspend fun insertCharacterEpisodeRef(characterEpisodeRef: CharacterEpisodeRef) {
+        appDatabase.characterDao().insertCharacterEpisodeRef(characterEpisodeRef)
+    }
+
     override suspend fun getAllCharacterCached(page: Int): Resource<List<CharacterAndLocation>> {
         return Resource.Success(appDatabase.characterDao().getCharacterAndLocation())
     }
