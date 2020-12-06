@@ -3,6 +3,8 @@ package com.junka.jnkrickmorty.di
 import android.content.Context
 import androidx.room.Room
 import com.google.gson.GsonBuilder
+import com.junka.jnkrickmorty.core.BASE_URL
+import com.junka.jnkrickmorty.core.DATABASE_NAME
 import com.junka.jnkrickmorty.data.local.AppDatabase
 import com.junka.jnkrickmorty.domain.remote.WebService
 import dagger.Module
@@ -21,7 +23,7 @@ object AppModule {
     @Singleton
     @Provides
     fun providerRoomInstance(@ApplicationContext context: Context) =
-        Room.databaseBuilder(context, AppDatabase::class.java, "jnk_rm_database").fallbackToDestructiveMigration().build()
+        Room.databaseBuilder(context, AppDatabase::class.java, DATABASE_NAME).fallbackToDestructiveMigration().build()
 
     @Singleton
     @Provides
@@ -31,7 +33,7 @@ object AppModule {
     @Provides
     fun providerRetrofitInstance(): Retrofit =
         Retrofit.Builder()
-            .baseUrl("https://rickandmortyapi.com/api/")
+            .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
             .build()
 

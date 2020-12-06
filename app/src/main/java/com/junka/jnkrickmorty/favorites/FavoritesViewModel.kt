@@ -1,4 +1,4 @@
-package com.junka.jnkrickmorty.presenter.ui.favorites
+package com.junka.jnkrickmorty.favorites
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*

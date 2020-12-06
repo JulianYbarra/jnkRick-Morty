@@ -1,4 +1,4 @@
-package com.junka.jnkrickmorty.presenter.ui.base
+package com.junka.jnkrickmorty.main.base
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView

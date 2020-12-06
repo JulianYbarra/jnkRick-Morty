@@ -1,4 +1,4 @@
-package com.junka.jnkrickmorty.presenter.ui.home
+package com.junka.jnkrickmorty.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,30 +11,24 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.junka.jnkrickmorty.R
-import com.junka.jnkrickmorty.databinding.FragmentMainBinding
-import com.junka.jnkrickmorty.presenter.ui.adapter.CharactersAdapter
-import com.junka.jnkrickmorty.core.hide
+import com.junka.jnkrickmorty.character.adapter.CharactersAdapter
+import com.junka.jnkrickmorty.common.hide
+import com.junka.jnkrickmorty.common.show
 import com.junka.jnkrickmorty.core.observer
-import com.junka.jnkrickmorty.core.show
 import com.junka.jnkrickmorty.core.Resource
+import com.junka.jnkrickmorty.databinding.FragmentHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainFragment : Fragment() {
+class HomeFragment : Fragment() {
 
-    private val viewModel by viewModels<MainFragmentViewModel>()
+    private val viewModel by viewModels<HomeFragmentViewModel>()
 
     private val characterAdapter by lazy { CharactersAdapter(onClickListener = viewModel::onCharacterItemClick) }
 
-    private lateinit var binding: FragmentMainBinding
+    private val binding: FragmentHomeBinding by lazy { FragmentHomeBinding.inflate(layoutInflater)}
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-
-        binding = FragmentMainBinding.inflate(inflater)
-
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         return binding.root
     }
 

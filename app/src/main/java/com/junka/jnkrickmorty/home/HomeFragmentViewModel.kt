@@ -1,4 +1,4 @@
-package com.junka.jnkrickmorty.presenter.ui.home
+package com.junka.jnkrickmorty.home
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
@@ -10,7 +10,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class MainFragmentViewModel @ViewModelInject constructor(private val repo: Repo) : ViewModel() {
+class HomeFragmentViewModel @ViewModelInject constructor(private val repo: Repo) : ViewModel() {
 
     private val _onNavigationToCharacterDetail = MutableLiveData<Event<CharacterRemote>>()
     val onNavigationToCharacterDetail: LiveData<Event<CharacterRemote>> get() = _onNavigationToCharacterDetail

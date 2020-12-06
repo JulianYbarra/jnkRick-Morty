@@ -1,4 +1,4 @@
-package com.junka.jnkrickmorty.presenter.ui.adapter
+package com.junka.jnkrickmorty.character.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.junka.jnkrickmorty.data.model.CharacterRemote
 import com.junka.jnkrickmorty.databinding.ItemCharacterBinding
-import com.junka.jnkrickmorty.presenter.ui.base.BaseViewHolder
+import com.junka.jnkrickmorty.main.base.BaseViewHolder
 import kotlin.properties.Delegates
 
 class CharactersAdapter(

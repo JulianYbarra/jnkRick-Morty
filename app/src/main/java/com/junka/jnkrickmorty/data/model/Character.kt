@@ -2,7 +2,7 @@ package com.junka.jnkrickmorty.data.model
 
 import android.os.Parcelable
 import androidx.room.*
-import kotlinx.android.parcel.Parcelize
+import kotlinx.parcelize.Parcelize
 
 @Parcelize
 @Entity

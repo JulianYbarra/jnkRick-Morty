@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/navigation_main_fragment"
-        android:name="com.junka.jnkrickmorty.presenter.ui.home.MainFragment"
+        android:name="com.junka.jnkrickmorty.home.HomeFragment"
         android:label="Home"
-        tools:layout="@layout/fragment_main" >
+        tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_navigation_main_fragment_to_navigation_character_fragment"
             app:destination="@id/navigation_character_fragment"
@@ -28,7 +28,7 @@
     </fragment>
     <fragment
         android:id="@+id/navigation_character_fragment"
-        android:name="com.junka.jnkrickmorty.presenter.ui.characters.CharacterFragment"
+        android:name="com.junka.jnkrickmorty.character.CharacterFragment"
         android:label="fragment_character"
         tools:layout="@layout/fragment_character" >
         <argument
@@ -39,7 +39,7 @@
     </fragment>
             <fragment
                 android:id="@+id/navigation_favorites_fragment"
-                android:name="com.junka.jnkrickmorty.presenter.ui.favorites.FavoritesFragment"
+                android:name="com.junka.jnkrickmorty.favorites.FavoritesFragment"
                 android:label="fragment_favorites"
                 tools:layout="@layout/fragment_favorites" />
 

@@ -1,4 +1,4 @@
-package com.junka.jnkrickmorty.presenter.ui.characters
+package com.junka.jnkrickmorty.character
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel

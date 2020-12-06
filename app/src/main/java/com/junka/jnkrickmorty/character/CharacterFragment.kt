@@ -1,4 +1,4 @@
-package com.junka.jnkrickmorty.presenter.ui.characters
+package com.junka.jnkrickmorty.character
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.junka.jnkrickmorty.core.load
+import com.junka.jnkrickmorty.common.load
 import com.junka.jnkrickmorty.data.model.CharacterRemote
 import com.junka.jnkrickmorty.databinding.FragmentCharacterBinding
 import dagger.hilt.android.AndroidEntryPoint
