@@ -19,4 +19,5 @@ abstract class ActivityModule {
 
     @Binds
     abstract  fun bindDataSourceImpl(dataSourceImpl: DataSourceImpl) : DataSource
+
 }
