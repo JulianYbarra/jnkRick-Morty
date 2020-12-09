@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.junka.jnkrickmorty.data.model.CharacterRemote
-import com.junka.jnkrickmorty.databinding.ItemCharacterBinding
+import com.junka.jnkrickmorty.databinding.LayoutItemCharacterBinding
 import com.junka.jnkrickmorty.main.base.BaseViewHolder
 import kotlin.properties.Delegates
 
@@ -18,7 +18,7 @@ class CharactersAdapter(
         notifyDataSetChanged()
     }
 
-    inner class ViewHolder(private val binding: ItemCharacterBinding) : BaseViewHolder<CharacterRemote>(binding.root){
+    inner class ViewHolder(private val binding: LayoutItemCharacterBinding) : BaseViewHolder<CharacterRemote>(binding.root){
 
         override fun bind(item: CharacterRemote, position: Int) {
             with(binding) {
@@ -32,12 +32,7 @@ class CharactersAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
-        val binding: ItemCharacterBinding = ItemCharacterBinding.inflate(
-            LayoutInflater.from(parent.context),
-            parent,
-            false
-        )
-
+        val binding: LayoutItemCharacterBinding = LayoutItemCharacterBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
     }
 
@@ -55,8 +50,5 @@ class CharactersAdapter(
                 }
             }
         }
-
-
-
     }
 }
