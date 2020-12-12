@@ -31,6 +31,14 @@ object AppModule {
 
     @Singleton
     @Provides
+    fun providerEpisodeDao(db: AppDatabase) = db.episodeDao()
+
+    @Singleton
+    @Provides
+    fun providerLocationDao(db: AppDatabase) = db.locationDao()
+
+    @Singleton
+    @Provides
     fun providerRetrofitInstance(): Retrofit =
         Retrofit.Builder()
             .baseUrl(BASE_URL)

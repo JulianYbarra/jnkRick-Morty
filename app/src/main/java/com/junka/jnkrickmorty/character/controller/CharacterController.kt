@@ -9,6 +9,4 @@ class CharacterController @Inject constructor(
     private val characterRepository: CharacterRepository) {
 
     fun getCharacters(page : Int) : Flow<List<CharacterRemote>> = characterRepository.getCharacters(page)
-
-
 }
