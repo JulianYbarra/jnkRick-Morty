@@ -21,6 +21,7 @@ import com.junka.jnkrickmorty.core.observer
 import com.junka.jnkrickmorty.data.model.CharacterRemote
 import com.junka.jnkrickmorty.databinding.FragmentHomeBinding
 import com.junka.jnkrickmorty.main.base.BaseFragment
+import com.junka.jnkrickmorty.main.communication.MainAction
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -28,7 +29,7 @@ class HomeFragment : BaseFragment() {
 
     private val viewModel by viewModels<HomeFragmentViewModel>()
 
-    private val characterAdapter by lazy { CharactersAdapter(onClickListener = { }) }
+    private val characterAdapter by lazy { CharactersAdapter(onClickListener = ::navigateToDetail) }
 
     private val binding: FragmentHomeBinding by lazy { FragmentHomeBinding.inflate(layoutInflater) }
 
@@ -85,7 +86,6 @@ class HomeFragment : BaseFragment() {
         }
     }
 
-
     private fun setUpSearchView() = with(binding) {
         inputSearch.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(p0: String?): Boolean {
@@ -111,6 +111,10 @@ class HomeFragment : BaseFragment() {
         navigateToFavorites.setOnClickListener {
             findNavController().navigate(R.id.action_navigation_main_fragment_to_navigation_favorites_fragment)
         }
+    }
+
+    private fun navigateToDetail(character : CharacterRemote){
+        communication.onFragmentEvent(MainAction.OnNavigateCharacterDetail(character))
     }
 
 }

@@ -1,5 +1,6 @@
 package com.junka.jnkrickmorty.common
 
+import android.net.Uri
 import android.util.DisplayMetrics
 import android.view.View
 import android.widget.ImageView
@@ -8,6 +9,9 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.request.RequestOptions
+import com.bumptech.glide.request.target.BitmapImageViewTarget
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
@@ -35,8 +39,26 @@ fun View.showOrHide(visibility : Boolean){
     if(visibility) show() else hide()
 }
 
-fun ImageView.load(url : String){
-    Glide.with(context).load(url).into(this)
+fun ImageView.downloadImage(imageSting: String, circle: Boolean = false) {
+    if (imageSting.contains("https")) {
+        downloadUrlImage(imageSting, circle)
+    } else {
+        downloadUriImage(Uri.parse(imageSting), circle)
+    }
+}
+
+fun ImageView.downloadUriImage(uri: Uri, circle: Boolean = false) {
+    Glide.with(context)
+        .load(uri)
+        .apply(if (circle) RequestOptions.circleCropTransform() else RequestOptions.noTransformation())
+        .into(this)
+}
+
+fun ImageView.downloadUrlImage(imageUrl: String, circle: Boolean) {
+    Glide.with(context)
+        .load(imageUrl)
+        .apply(if (circle) RequestOptions.circleCropTransform() else RequestOptions.noTransformation())
+        .into(this)
 }
 
 @ExperimentalCoroutinesApi

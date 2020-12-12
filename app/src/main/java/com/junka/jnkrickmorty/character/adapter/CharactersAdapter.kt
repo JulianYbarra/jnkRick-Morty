@@ -3,7 +3,7 @@ package com.junka.jnkrickmorty.character.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
+import com.junka.jnkrickmorty.common.downloadImage
 import com.junka.jnkrickmorty.data.model.CharacterRemote
 import com.junka.jnkrickmorty.databinding.LayoutItemCharacterBinding
 import com.junka.jnkrickmorty.main.base.BaseViewHolder
@@ -23,8 +23,7 @@ class CharactersAdapter(
         override fun bind(item: CharacterRemote, position: Int) {
             with(binding) {
 
-                Glide.with(this.root).load(item.image).into(characterImage)
-                //characterImage.load(item.image)
+                characterImage.downloadImage(item.image,true)
                 characterName.text = item.name
             }
         }
@@ -41,10 +40,10 @@ class CharactersAdapter(
     override fun onBindViewHolder(holder: BaseViewHolder<*>, position: Int) {
 
         when(holder){
-            is ViewHolder ->{
-                val item = characters[position]
+            is ViewHolder -> {
 
-                holder.bind(item,position)
+                val item = characters[position]
+                holder.bind(item, position)
                 holder.itemView.setOnClickListener {
                     onClickListener(item)
                 }

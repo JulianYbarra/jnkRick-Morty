@@ -11,11 +11,8 @@
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:clickable="true"
-        android:focusable="true"
         android:elevation="@dimen/plane_00"
-        app:cardPreventCornerOverlap="false"
-        style="?shapeAppearanceSmallComponent">
+        app:cardPreventCornerOverlap="false">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

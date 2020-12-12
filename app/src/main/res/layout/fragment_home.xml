@@ -49,9 +49,10 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/navigateToFavorites"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/grid_2"
         android:text="@string/my_favorites"
-        android:layout_gravity="bottom"/>
+        android:layout_gravity="bottom|center"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
