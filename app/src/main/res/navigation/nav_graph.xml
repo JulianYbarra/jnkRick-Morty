@@ -30,7 +30,7 @@
         android:id="@+id/navigation_character_fragment"
         android:name="com.junka.jnkrickmorty.character.ui.CharacterDetailFragment"
         android:label="fragment_character"
-        tools:layout="@layout/fragment_character" >
+        tools:layout="@layout/fragment_character_detail" >
         <argument
             android:name="character"
             app:argType="com.junka.jnkrickmorty.data.model.Character"

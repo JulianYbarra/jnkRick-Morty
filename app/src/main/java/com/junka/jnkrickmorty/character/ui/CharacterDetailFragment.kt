@@ -10,7 +10,7 @@ import androidx.fragment.app.viewModels
 import com.junka.jnkrickmorty.common.downloadImage
 import com.junka.jnkrickmorty.core.CHARACTER_PARAM
 import com.junka.jnkrickmorty.data.model.CharacterRemote
-import com.junka.jnkrickmorty.databinding.FragmentCharacterBinding
+import com.junka.jnkrickmorty.databinding.FragmentCharacterDetailBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -18,7 +18,7 @@ class CharacterDetailFragment : Fragment() {
 
     private val viewModel by viewModels<CharacterDetailViewModel>()
 
-    private val binding: FragmentCharacterBinding by lazy { FragmentCharacterBinding.inflate(layoutInflater) }
+    private val binding: FragmentCharacterDetailBinding by lazy { FragmentCharacterDetailBinding.inflate(layoutInflater) }
 
     private val characterData: CharacterRemote? by lazy { requireArguments().getParcelable(CHARACTER_PARAM)}
 
